@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    fetch('http://localhost:3000/api/v1/customers')
+    fetch('https://instacodehelper.cyclic.app/api/v1/customers')
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {

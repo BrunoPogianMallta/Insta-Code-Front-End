@@ -13,7 +13,7 @@ function submitForm(event) {
     customerCode: formData.get('customerCode').toLowerCase()
   };
 
-  fetch('http://localhost:3000/api/v1/customers', {
+  fetch('https://instacodehelper.cyclic.app/api/v1/customers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
