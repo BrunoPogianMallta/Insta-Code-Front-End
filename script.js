@@ -1,3 +1,36 @@
+const local = 'http://localhost:3000/api/v1/customers';
+const server = 'https://instacodehelper.cyclic.app/api/v1/customers';
+
+// Função para exibir o modal
+function showModal() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'block';
+}
+
+// Função para fechar o modal
+function closeModal() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'none';
+}
+
+// Evento de clique no botão "Sim" do modal
+document.getElementById('continueButton').addEventListener('click', function() {
+  closeModal();
+  form.reset();
+});
+
+// Evento de clique no botão "Voltar ao Dashboard" do modal
+document.getElementById('dashboardButton').addEventListener('click', function() {
+  closeModal();
+  window.location.href = 'dashboard.html';
+});
+
+// Função para exibir mensagem de sucesso e abrir o modal
+function showSuccessMessage() {
+  document.getElementById('message').textContent = 'Obrigado por colaborar!';
+  showModal();
+}
+
 function submitForm(event) {
   event.preventDefault();
 
@@ -13,16 +46,20 @@ function submitForm(event) {
     customerCode: formData.get('customerCode').toLowerCase()
   };
 
-  fetch('https://instacodehelper.cyclic.app/api/v1/customers', {
+  const accessToken = sessionStorage.getItem('accessToken');
+  const headers = {
+    'Content-Type': 'application/json',
+    'x-access-token': accessToken
+  };
+
+  fetch(server, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: headers,
     body: JSON.stringify(payload)
   })
     .then(response => {
       if (response.ok) {
-        document.getElementById('message').textContent = 'Obrigado por colaborar!';
+        showSuccessMessage();
         form.reset();
       } else {
         throw new Error('Ocorreu um erro ao enviar os dados.');
@@ -74,7 +111,7 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
 
   recognition.addEventListener('result', (event) => {
     const voiceResult = event.results[0][0].transcript.trim();
-    
+
     if (activeField) {
       activeField.value = voiceResult;
       activeField = null;
@@ -87,7 +124,6 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
 
   // Função para iniciar o reconhecimento de voz no campo específico
   function startRecognition(fieldName) {
-    
     activeField = form.querySelector(`input[name="${fieldName}"], select[name="${fieldName}"]`);
     if (activeField) {
       recognition.start();
@@ -107,5 +143,3 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
   voiceButton.disabled = true;
   console.error('A API SpeechRecognition não é suportada neste navegador.');
 }
-
-
