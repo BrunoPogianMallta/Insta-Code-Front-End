@@ -23,7 +23,7 @@ h1 {
 .login-form input[type="text"],
 .login-form input[type="password"] {
   display: block;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid #e1e4e8;
   border-radius: 6px;
