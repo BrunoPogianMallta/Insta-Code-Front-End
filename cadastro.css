@@ -1,65 +1,60 @@
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
   }
   
   .container {
-    max-width: 400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .cadastro-form input[type="text"],
-  .cadastro-form input[type="email"],
-  .cadastro-form input[type="password"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 24px;
     margin-bottom: 10px;
   }
   
-  .cadastro-form button {
-    display: block;
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
     width: 100%;
     padding: 10px;
-    background-color: #333;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
   }
   
-  .cadastro-form p {
-    text-align: center;
-    margin-top: 10px;
+  /* Estilos para telas médias */
+  @media screen and (max-width: 768px) {
+    .container {
+      max-width: 960px;
+      padding: 10px;
+    }
   }
   
-  .cadastro-form p a {
-    color: #333;
-  }
-  
-  .cadastro-form p a:hover {
-    color: #555;
-  }
-
-  
-  
+  /* Estilos para telas pequenas */
   @media screen and (max-width: 480px) {
     .container {
       max-width: 100%;
       padding: 10px;
+    }
+  }
+  
+  /* Estilos adicionais para tornar o layout mais amigável em dispositivos móveis */
+  
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 20px;
+    }
+  
+    button {
+      width: 100%;
     }
   }
