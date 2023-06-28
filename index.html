@@ -1,22 +1,56 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instant Code</title>
   <link rel="stylesheet" href="index.css">
+  <script src="termo.js"></script>
 </head>
 
 <body>
+  <div id="termOverlay">
+    <div id="termModal">
+      <h1>Termo de Responsabilidade</h1>
+      <p>Esta aplicação foi desenvolvida para fins de auxiliar os entregadores, para que não percam tempo esperando o código em portarias, hotéis e eventos parecidos, assim como não percam pontuação de SCORE quando o cliente não for encontrado.</p>
+      <p>Qualquer uso diferente do fim especificado fica sob a responsabilidade dos usuários e exclui a responsabilidade do desenvolvedor.</p>
+      <p>Ao clicar em "Aceitar", você concorda com os termos e condições estabelecidos acima.</p>
+      <button id="acceptButton">Aceitar</button>
+    </div>
+  </div>
+
   <header>
     <h1>Instant Code</h1>
   </header>
   <div class="container">
     <div class="options">
-      <a href="cadastrar.html" class="button">Cadastrar Cliente</a>
-      <a href="buscar.html" class="button">Consultar Clientes</a>
+      <a href="cadastrar.html" class="button botao-bugado">Cadastrar Cliente</a>
+      <a href="buscar.html" class="button botao-bugado">Consultar Clientes</a>
     </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const termOverlay = document.getElementById('termOverlay');
+      const termModal = document.getElementById('termModal');
+      const acceptButton = document.getElementById('acceptButton');
+      const buttons = document.querySelectorAll('.botao-bugado');
+
+      acceptButton.addEventListener('click', function() {
+        termOverlay.style.display = 'none';
+        termModal.style.display = 'none';
+
+        buttons.forEach(function(button) {
+          button.classList.remove('botao-bugado');
+        });
+      });
+
+      termOverlay.style.display = 'flex';
+      termModal.style.display = 'block';
+    });
+  </script>
 </body>
+
 </html>
