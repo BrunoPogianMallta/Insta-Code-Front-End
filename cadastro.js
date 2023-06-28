@@ -15,6 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
   
+      if (!/^[A-Za-z]+$/.test(firstName) || !/^[A-Za-z]+$/.test(lastName)) {
+        alert('Os campos de nome e sobrenome devem conter apenas letras.');
+        return;
+      }
+  
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+      }
+  
+      if (!/^.{8,}$/.test(password)) {
+        alert('A senha deve ter pelo menos 8 caracteres.');
+        return;
+      }
+  
       if (password !== confirmPassword) {
         alert('As senhas não coincidem.');
         return;
