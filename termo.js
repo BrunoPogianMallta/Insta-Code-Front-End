@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(user),
+        mode: 'cors' // Certifique-se de que essa opção esteja definida como 'cors'
       })
         .then(function(response) {
           if (response.ok) {
