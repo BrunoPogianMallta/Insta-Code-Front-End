@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       // Enviar a requisição para criar o usuário no banco de dados
-      fetch('https://instacodefood.vercel.app/api/v1/user', {
+      fetch('https://instacodehelper.cyclic.app/api/v1/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
