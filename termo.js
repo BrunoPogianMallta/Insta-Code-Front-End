@@ -4,18 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (acceptButton) {
     acceptButton.addEventListener('click', function() {
-      // Recuperar os dados do usuário dos campos de input
-      const firstName = document.getElementById('firstName').value;
-      const lastName = document.getElementById('lastName').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
       // Criar objeto com os dados do usuário
       const user = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
         acceptedTerms: true
       };
 
@@ -32,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(response) {
           if (response.ok) {
             // Redirecionar para a página do dashboard após o cadastro bem-sucedido
-            window.location.href = 'dashboard.html';
+            window.location.href = 'index.html';
           } else {
             throw new Error('Ocorreu um erro ao criar o usuário.');
           }
