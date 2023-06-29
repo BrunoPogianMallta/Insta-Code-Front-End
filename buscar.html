@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instant Code - Buscar Clientes</title>
+  <title>1nst4 c0d3- Buscar código</title>
   <link rel="stylesheet" href="buscar.css">
 </head>
 <body>
   <header>
-    <h1>Buscar Clientes</h1>
+    <div class="logo">
+      <img src="instacodelogo.png" alt="Instant Code Logo">
+      <!-- <h1>Instant Code</h1> -->
+    </div>
+  
+    <div class="user-info">
+      <a href="dashboard.html" class="return-button">Voltar</a>
+    </div>
   </header>
   <div class="container">
+    <div class="search-title">Digite aqui o endereço para receber o código:</div>
     <div class="search-form">
-      <input type="text" id="search-input" placeholder="Digite o nome do cliente">
-      <button id="search-button">Buscar</button>
+      <input type="text" id="search-input" placeholder="Digite o endereço">
+      <!-- <button id="search-button">Buscar</button> -->
     </div>
     <div id="search-results"></div>
     <div id="loading-message"></div> <!-- Elemento adicionado para exibir a mensagem de "Aguarde, por favor" -->
-    <a href="dashboard.html" class="return-button">Voltar</a>
+    <!-- <a href="dashboard.html" class="return-button">Voltar</a> -->
   </div>
   <script src="buscar.js"></script>
 </body>

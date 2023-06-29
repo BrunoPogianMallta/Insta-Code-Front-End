@@ -32,7 +32,7 @@ select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
 }
 
 button[type="submit"] {
@@ -42,6 +42,7 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
 #message {
@@ -51,7 +52,6 @@ button[type="submit"] {
 .input-wrapper {
   position: relative;
 }
-
 
 .voice-icon {
   position: absolute;
@@ -79,7 +79,8 @@ button[type="submit"] {
 .fa-microphone.active {
   color: #f00;
 }
-.botao-bugado{
+
+.botao-bugado {
   display: none;
 }
 
@@ -109,6 +110,16 @@ button[type="submit"] {
   text-align: center;
 }
 
+.return-button {
+  display: inline-block;
+  padding: 9px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
 .modal h2 {
   margin-top: 0;
 }
@@ -117,21 +128,71 @@ button[type="submit"] {
   margin-top: 10px;
 }
 
-/* Animação de piscar */
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
+/* Adições para replicar o estilo do dashboard */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
 }
 
-.voice-icon.active {
-  animation: blink 1s infinite; /* Aplica a animação de piscar */
+.logo img {
+  height: 100px;
+  margin-right: 10px;
 }
 
+.logo h1 {
+  margin: 0;
+  font-size: 24px;
+}
 
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info .welcome-message {
+  margin-right: 10px;
+}
+
+.user-info .username {
+  font-weight: bold;
+}
+
+.user-info button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.user-info button:hover {
+  background-color: #ccc;
+}
+
+.user-info i {
+  margin-left: 5px;
+}
+
+/* Responsividade */
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  input[type="text"],
+  select {
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
