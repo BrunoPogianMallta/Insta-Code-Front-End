@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (acceptButton) {
     acceptButton.addEventListener('click', function() {
-      // Recuperar os dados do usuário da URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const firstName = urlParams.get('firstName');
-      const lastName = urlParams.get('lastName');
-      const email = urlParams.get('email');
-      const password = urlParams.get('password');
+      // Recuperar os dados do usuário dos campos de input
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
       // Criar objeto com os dados do usuário
       const user = {
@@ -20,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         acceptedTerms: true
       };
 
+      // 'https://instacodehelper.cyclic.app/api/v1/user'
       // Enviar a requisição para criar o usuário no banco de dados
       fetch('https://instacodehelper.cyclic.app/api/v1/user', {
         method: 'POST',

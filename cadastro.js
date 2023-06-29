@@ -35,7 +35,34 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
   
-      // Redirecionar para a página de termos após o cadastro bem-sucedido
-      window.location.href = 'termo.html?firstName=' + encodeURIComponent(firstName) + '&lastName=' + encodeURIComponent(lastName) + '&email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
+      // Criar objeto com os dados do usuário
+      const user = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      };
+  
+      // Enviar a requisição para criar o usuário no backend
+      fetch('https://instacodehelper.cyclic.app/api/v1/user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user),
+        mode: 'cors'
+      })
+        .then(function(response) {
+          if (response.ok) {
+            // Redirecionar para a página de termos após o cadastro bem-sucedido
+            window.location.href = 'termo.html';
+          } else {
+            throw new Error('Ocorreu um erro ao criar o usuário.');
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+          alert('Ocorreu um erro ao criar o usuário. Por favor, tente novamente mais tarde.');
+        });
     });
   });
