@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         acceptedTerms: true
       };
 
-      // 'https://instacodehelper.cyclic.app/api/v1/user'
       // Enviar a requisição para criar o usuário no banco de dados
       fetch('https://instacodehelper.cyclic.app/api/v1/user', {
         method: 'POST',
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(user),
-        mode: 'cors' // Certifique-se de que essa opção esteja definida como 'cors'
+        mode: 'no-cors' // Definir o modo como 'no-cors'
       })
         .then(function(response) {
           if (response.ok) {
