@@ -1,3 +1,6 @@
+const local = 'http://localhost:3000/api/v1/customers';
+const server = 'https://instacodehelper.cyclic.app/api/v1/customers';
+
 document.addEventListener('DOMContentLoaded', function() {
     const logoutButton = document.getElementById('logout-button');
     const accessToken = sessionStorage.getItem('accessToken');
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(user => {
         // Exibir a mensagem de boas-vindas
-        usernameElement.textContent = `Bem-vindo, ${user.firstName} ${user.lastName}`;
+        usernameElement.textContent = `${user.firstName} ${user.lastName}`;
       })
       .catch(error => {
         console.error('Ocorreu um erro ao obter os dados do usuário:', error);

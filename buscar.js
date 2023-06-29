@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function performSearch() {
     const searchValue = searchInput.value.trim().toLowerCase();
 
-    if (searchValue === '') {
+    if (searchValue.length < 5) {
       clearResults();
       return;
     }
@@ -48,8 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     showLoadingMessage(); // Exibe a mensagem de "Aguarde, por favor"
 
     const filteredResults = allCustomers.filter(customer => {
-      const customerAddress = customer.address.toLowerCase();
-      return customerAddress.includes(searchValue);
+      const addressWords = customer.address.toLowerCase().split(' ');
+      const searchWords = searchValue.split(' ');
+
+      return searchWords.every(word => {
+        return addressWords.some(addressWord => addressWord.startsWith(word));
+      });
     });
 
     renderResults(filteredResults);
@@ -91,9 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const customerAddressCell = document.createElement('td');
       const customerCodeCell = document.createElement('td');
 
-      customerNameCell.textContent = customer.name;
-      customerLastNameCell.textContent = customer.lastName;
-      customerAddressCell.textContent = customer.address;
+      customerNameCell.innerHTML = highlightSearchWord(customer.name);
+      customerLastNameCell.innerHTML = highlightSearchWord(customer.lastName);
+      customerAddressCell.innerHTML = highlightSearchWord(customer.address);
       customerCodeCell.textContent = customer.customerCode;
 
       tr.appendChild(customerNameCell);
@@ -127,5 +131,24 @@ document.addEventListener('DOMContentLoaded', () => {
   function showError(message) {
     searchResults.innerHTML = `<p class="error">${message}</p>`;
     searchResults.classList.remove('visible'); // Remove a classe 'visible' para ocultar os resultados
+  }
+
+  function highlightSearchWord(text) {
+    const searchValue = searchInput.value.trim().toLowerCase();
+    const searchWords = searchValue.split(' ');
+
+    if (searchWords.length === 1) {
+      const regex = new RegExp(searchValue, 'gi');
+      return text.replace(regex, '<strong>$&</strong>');
+    } else {
+      let highlightedText = text;
+
+      searchWords.forEach(word => {
+        const regex = new RegExp(word, 'gi');
+        highlightedText = highlightedText.replace(regex, '<strong>$&</strong>');
+      });
+
+      return highlightedText;
+    }
   }
 });
