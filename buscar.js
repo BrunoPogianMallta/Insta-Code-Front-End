@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     showLoadingMessage(); // Exibe a mensagem de "Aguarde, por favor"
 
     const filteredResults = allCustomers.filter(customer => {
-      const customerName = customer.name.toLowerCase();
-      return customerName.startsWith(searchValue);
+      const customerAddress = customer.address.toLowerCase();
+      return customerAddress.includes(searchValue);
     });
 
     renderResults(filteredResults);
