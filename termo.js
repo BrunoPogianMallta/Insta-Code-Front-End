@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(user),
-        mode: 'no-cors' // Definir o modo como 'no-cors'
+        // mode: 'no-cors' // Definir o modo como 'no-cors'
       })
         .then(function(response) {
           if (response.ok) {
