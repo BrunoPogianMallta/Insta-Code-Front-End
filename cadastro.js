@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
   
-      if (!/^[A-Za-z]+$/.test(firstName) || !/^[A-Za-z]+$/.test(lastName)) {
+      if (!/^[A-Za-zÀ-ÖØ-öø-ÿ]+$/.test(firstName) || !/^[A-Za-zÀ-ÖØ-öø-ÿ]+$/.test(lastName)) {
         alert('Os campos de nome e sobrenome devem conter apenas letras.');
         return;
       }
