@@ -2,6 +2,7 @@ const local = 'http://localhost:3000/api/v1/customers';
 const server = 'https://instacodehelper.cyclic.app/api/v1/customers';
 let allCustomers = []; // Variável para armazenar todos os clientes
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Content-Type': 'application/json',
     'x-access-token': token
   };
+  
 
   fetch(server, {
     headers: headers
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function performSearch() {
     const searchValue = searchInput.value.trim().toLowerCase();
-
+    
     if (searchValue.length < 5) {
       clearResults();
       return;
@@ -135,19 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function highlightSearchWord(text) {
     const searchValue = searchInput.value.trim().toLowerCase();
-    const searchWords = searchValue.split(' ');
-
+    const searchWords = searchValue.split(' ').filter(word => word !== ''); // Remover os espaços vazios
+  
     if (searchWords.length === 1) {
       const regex = new RegExp(searchValue, 'gi');
       return text.replace(regex, '<strong>$&</strong>');
     } else {
       let highlightedText = text;
-
+  
       searchWords.forEach(word => {
         const regex = new RegExp(word, 'gi');
         highlightedText = highlightedText.replace(regex, '<strong>$&</strong>');
       });
-
+  
       return highlightedText;
     }
   }
